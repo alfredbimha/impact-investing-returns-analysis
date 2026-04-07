@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Understanding Impact Investing Returns</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;line-height:1.7;color:#1a1a2e;background:#fafafa}
+.hero{background:linear-gradient(135deg,#6c5ce7,#a29bfe);padding:60px 20px;text-align:center;color:#fff}
+.hero h1{font-family:'DM Serif Display',serif;font-size:2.2rem;margin-bottom:10px}
+.hero p{font-size:1.1rem;opacity:.9;max-width:650px;margin:0 auto}
+.container{max-width:900px;margin:0 auto;padding:30px 20px 60px}
+.card{background:#fff;border-radius:14px;padding:35px;margin-bottom:25px;box-shadow:0 2px 20px rgba(0,0,0,.06);border:1px solid #eee}
+.card h2{font-family:'DM Serif Display',serif;font-size:1.5rem;color:#6c5ce7;margin-bottom:15px;padding-bottom:10px;border-bottom:2px solid #f0f0f0}
+.card h3{font-size:1.05rem;color:#a29bfe;margin:20px 0 8px}
+p,.li-text{color:#444;margin-bottom:12px;font-size:.95rem}
+.steps{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0}
+.step{flex:1;min-width:130px;padding:18px 12px;border-radius:10px;text-align:center;color:#fff;font-weight:600;font-size:.85rem}
+.step .num{font-size:1.8rem;display:block;margin-bottom:5px}
+.formula{background:#f8f9ff;border-left:4px solid #6c5ce7;padding:18px 20px;border-radius:0 10px 10px 0;margin:15px 0;font-family:monospace;font-size:.9rem;overflow-x:auto}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:15px;margin:15px 0}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:15px 0}
+.mini{padding:18px;border-radius:10px;border:1px solid #eee;background:#fafbff}
+.mini h4{font-size:.95rem;color:#6c5ce7;margin-bottom:8px}
+.mini p{font-size:.85rem;margin-bottom:0}
+.tag{display:inline-block;padding:3px 10px;border-radius:12px;font-size:.8rem;font-weight:600;margin:2px}
+.tag-green{background:#d4edda;color:#155724}
+.tag-red{background:#f8d7da;color:#721c24}
+.tag-blue{background:#d1ecf1;color:#0c5460}
+.tag-yellow{background:#fff3cd;color:#856404}
+.bar-chart{margin:15px 0}
+.bar-row{display:flex;align-items:center;margin:6px 0}
+.bar-label{width:140px;font-size:.85rem;font-weight:500;text-align:right;padding-right:12px}
+.bar{height:24px;border-radius:4px;display:flex;align-items:center;padding-left:8px;font-size:.75rem;color:#fff;font-weight:600;transition:width .5s}
+.insight{background:linear-gradient(135deg,#6c5ce711,#a29bfe11);border:1px solid #6c5ce733;border-radius:10px;padding:18px;margin:15px 0}
+.insight strong{color:#6c5ce7}
+.footer{text-align:center;padding:30px;color:#999;font-size:.85rem}
+</style>
+</head>
+<body>
+<div class="hero">
+<h1>Understanding Impact Investing Returns</h1>
+<p>Do ESG-focused funds sacrifice financial returns? The evidence says: not much.</p>
+</div>
+<div class="container">
+
+<div class="card">
+<h2>The Core Question</h2>
+<p>Many investors worry that "doing good" means "earning less." We test this by comparing risk-adjusted returns of ESG ETFs against conventional benchmarks.</p>
+<div class="grid3">
+<div class="mini"><h4>Sharpe Ratio</h4><p>Return per unit of risk. Higher = better. Accounts for both returns AND volatility.</p></div>
+<div class="mini"><h4>Sortino Ratio</h4><p>Like Sharpe but only penalizes downside risk. Better for loss-averse investors.</p></div>
+<div class="mini"><h4>Max Drawdown</h4><p>Worst peak-to-trough decline. How much could you have lost?</p></div>
+</div>
+</div>
+
+<div class="card">
+<h2>Mean-Variance Optimization</h2>
+<p>We construct an "efficient frontier" — the set of portfolios that offer the highest return for each level of risk. If ESG funds appear on or near this frontier, they don't sacrifice returns.</p>
+<div class="formula">Maximize: E[R] − (λ/2) × σ² subject to: weights sum to 1, no shorting</div>
+<div class="insight"><strong>Finding:</strong> ESG funds show competitive Sharpe ratios. The efficient frontier including ESG funds is nearly identical to the one without — suggesting minimal return sacrifice.</div>
+</div>
+
+</div>
+<div class="footer">Part of a 20-project Sustainable Finance Research Portfolio</div>
+</body>
+</html>

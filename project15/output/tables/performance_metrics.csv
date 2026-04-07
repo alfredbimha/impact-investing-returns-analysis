@@ -1,0 +1,11 @@
+Fund,Name,Type,Annual_Return_pct,Volatility_pct,Sharpe,Sortino,Max_Drawdown_pct,Calmar
+QQQ,Nasdaq 100,Conventional,17.75,24.09,0.571,0.723,-38.5,0.461
+SPY,S&P 500,Conventional,13.34,19.51,0.479,0.569,-35.75,0.373
+ESGU,ESG US Equity,ESG/Impact,13.24,19.92,0.464,0.554,-36.09,0.367
+SUSA,Sustainable USA,ESG/Impact,12.95,19.65,0.456,0.564,-34.82,0.372
+VTI,Total Market,Conventional,12.79,19.89,0.442,0.526,-37.08,0.345
+QCLN,Clean Tech,ESG/Impact,10.28,37.31,0.168,0.244,-79.49,0.129
+ESGD,ESG Intl Dev,ESG/Impact,7.0,18.07,0.166,0.203,-35.78,0.196
+ICLN,Clean Energy,ESG/Impact,8.4,28.7,0.153,0.208,-72.24,0.116
+VWO,EM Equity,Conventional,4.84,20.01,0.042,0.053,-40.27,0.12
+AGG,US Bonds,Conventional,1.76,5.84,-0.383,-0.475,-18.7,0.094
