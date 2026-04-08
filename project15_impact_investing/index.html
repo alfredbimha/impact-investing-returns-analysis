@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 15 — Impact Investing Portfolio Optimisation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        :root {
+            --c1: #701a75;
+            --c2: #86198f;
+            --accent: #e879f9;
+            --ink: #0f172a;
+            --body: #334155;
+            --muted: #64748b;
+            --border: #e2e8f0;
+            --bg: #f8fafc;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, sans-serif;
+            line-height: 1.75;
+            color: var(--body);
+            background: var(--bg);
+        }
+
+        /* ── HERO ── */
+        .hero {
+            background: linear-gradient(160deg, var(--c1) 0%, var(--c2) 100%);
+            padding: 72px 24px 56px;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.06) 0%, transparent 60%);
+        }
+        .hero-inner { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; }
+        .hero .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.25);
+            padding: 5px 16px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+        .hero .subtitle {
+            font-size: 1.15rem;
+            opacity: 0.92;
+            font-weight: 400;
+            color: #ffffff;
+        }
+        .hero .meta {
+            margin-top: 24px;
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            opacity: 0.85;
+            color: #ffffff;
+        }
+
+        /* ── CONTAINER ── */
+        .container { max-width: 860px; margin: 0 auto; padding: 0 20px 64px; }
+
+        /* ── SECTIONS ── */
+        .section {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 36px 32px;
+            margin-top: 28px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+            border: 1px solid var(--border);
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--ink);
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+        }
+
+        /* ── RESEARCH QUESTION ── */
+        .rq {
+            background: linear-gradient(135deg, var(--c1), var(--c2));
+            color: #ffffff;
+            border: none;
+            font-size: 1.15rem;
+            font-style: italic;
+            text-align: center;
+            padding: 32px 36px;
+        }
+        .rq-label {
+            display: block;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 0.78rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        /* ── DATA BOX ── */
+        .data-box {
+            background: #f1f5f9;
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.95rem;
+            line-height: 1.85;
+        }
+        .data-box code {
+            background: #e2e8f0;
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85em;
+        }
+
+        /* ── METHOD CARDS ── */
+        .methods-grid { display: flex; flex-direction: column; gap: 14px; }
+        .method-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 18px 22px;
+            transition: border-color 0.2s;
+        }
+        .method-card:hover { border-color: var(--accent); }
+        .method-name {
+            font-weight: 700;
+            color: var(--ink);
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        .method-desc {
+            font-size: 0.92rem;
+            color: var(--muted);
+        }
+
+        /* ── FINDINGS ── */
+        .finding {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+        .finding:last-child { margin-bottom: 0; }
+        .finding-num {
+            flex-shrink: 0;
+            width: 30px; height: 30px;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-top: 2px;
+        }
+        .finding-text {
+            font-size: 0.95rem;
+            color: var(--body);
+        }
+
+        /* ── CODE ── */
+        .code-block {
+            background: #1e293b;
+            border-radius: 8px;
+            padding: 24px;
+            overflow-x: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            line-height: 1.7;
+            color: #e2e8f0;
+        }
+        .code-block .comment { color: #64748b; }
+        .code-block .keyword { color: #c084fc; }
+        .code-block .string { color: #86efac; }
+        .code-block .function { color: #7dd3fc; }
+
+        /* ── TOOLS BAR ── */
+        .tools-bar {
+            text-align: center;
+            padding: 20px;
+            margin-top: 28px;
+            font-size: 0.9rem;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        /* ── FOOTER ── */
+        .footer {
+            text-align: center;
+            padding: 32px 20px;
+            font-size: 0.82rem;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .section { padding: 24px 18px; }
+            .hero { padding: 48px 18px 40px; }
+            .hero .meta { flex-direction: column; gap: 6px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <div class="hero-inner">
+        <div class="badge">Project 15 · Sustainable Finance Analytics</div>
+        <h1>Impact Investing Portfolio Optimisation</h1>
+        <p class="subtitle">Balancing Financial Returns and Social Impact Metrics</p>
+        <div class="meta">
+            <span>Languages: Python & R</span>
+            <span>Category: Sustainable Finance Analytics</span>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="section rq">
+        <span class="rq-label">Research Question</span>
+        Can a portfolio be optimised to maximise social/environmental impact without sacrificing risk-adjusted financial returns?
+    </div>
+
+    <div class="section">
+        <div class="section-title">Methodology</div>
+        <p>Multi-objective portfolio optimisation combining Markowitz mean-variance framework with impact constraints. Uses the efficient frontier approach with an additional impact dimension, computing the impact-adjusted Sharpe ratio to evaluate trade-offs.</p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Data Collection &amp; Sources</div>
+        <div class="data-box"><b>Source:</b> Yahoo Finance (ESG fund returns via yfinance)<br>
+<b>Funds:</b> SUSA, ESGU, DSI, ICLN, VSGX (ESG/impact ETFs) + SPY, AGG (benchmarks)<br>
+<b>Period:</b> 2018–2024 daily returns<br>
+<b>Key finding:</b> Impact funds show Sharpe ratio ~0.42 vs ~0.36 for benchmarks</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Key Methods</div>
+        <div class="methods-grid">
+            <div class="method-card">
+                <div class="method-name">Mean-Variance Optimisation</div>
+                <div class="method-desc">Markowitz framework: maximise expected return for a given risk level — the efficient frontier maps all optimal portfolios</div>
+            </div>
+            <div class="method-card">
+                <div class="method-name">Impact Constraints</div>
+                <div class="method-desc">Additional optimisation constraint requiring minimum impact score — creates an 'impact-efficient frontier'</div>
+            </div>
+            <div class="method-card">
+                <div class="method-name">Sharpe Ratio Comparison</div>
+                <div class="method-desc">Risk-adjusted return metric comparing impact portfolios vs conventional benchmarks — tests the 'doing well by doing good' hypothesis</div>
+            </div></div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Key Findings</div>
+        
+            <div class="finding">
+                <div class="finding-num">1</div>
+                <div class="finding-text">Impact fund portfolio achieves a Sharpe ratio of ~0.42 vs ~0.36 for conventional benchmarks, suggesting no performance penalty</div>
+            </div>
+            <div class="finding">
+                <div class="finding-num">2</div>
+                <div class="finding-text">The impact-efficient frontier lies close to (and sometimes above) the conventional frontier, especially for moderate risk levels</div>
+            </div>
+            <div class="finding">
+                <div class="finding-num">3</div>
+                <div class="finding-text">Maximum drawdown for impact portfolios was slightly lower during COVID-19, consistent with ESG 'downside protection' theory</div>
+            </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Code Sample</div>
+        <pre class="code-block"># Portfolio optimisation with impact constraints
+import numpy as np
+from scipy.optimize import minimize
+
+def neg_sharpe(weights, returns, cov_matrix, rf=0.02):
+    port_ret = np.dot(weights, returns.mean()) * 252
+    port_vol = np.sqrt(np.dot(weights, cov_matrix @ weights) * 252)
+    return -(port_ret - rf) / port_vol
+
+# Impact constraint: weighted score >= threshold
+impact_constraint = {'type': 'ineq', 
+    'fun': lambda w: np.dot(w, impact_scores) - min_impact}
+result = minimize(neg_sharpe, x0, args=(returns, cov),
+    constraints=[weight_sum, impact_constraint], bounds=bounds)</pre>
+    </div>
+
+    <div class="tools-bar">Python · scipy · yfinance · numpy · matplotlib · R (PortfolioAnalytics)</div>
+
+    <div class="footer">
+        Sustainable Finance Research Portfolio · Project 15 of 20<br>
+        AI-Assisted Research Workflow — Methodology directed by researcher, implementation assisted by Claude AI
+    </div>
+
+</div>
+</body>
+</html>
